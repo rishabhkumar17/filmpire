@@ -11,6 +11,7 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    'comma-dangle': 'off',
     'import/no-cycle': 0,
     'no-console': 0,
     'react/prop-types': 0,
