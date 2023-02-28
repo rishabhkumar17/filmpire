@@ -14,9 +14,10 @@ import {
   Brightness7,
   Menu,
 } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 
-import { Link } from 'react-router-dom';
+import { SideBar } from '..';
 import useStyles from './styles';
 
 function NavBar() {
@@ -84,7 +85,9 @@ function NavBar() {
               <SideBar setMobileOpen={setMobileOpen} />
             </Drawer>
           ) : (
-            <Drawer />
+            <Drawer>
+              <SideBar setMobileOpen={setMobileOpen} />
+            </Drawer>
           )}
         </nav>
       </div>
