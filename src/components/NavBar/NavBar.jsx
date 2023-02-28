@@ -78,6 +78,7 @@ function NavBar() {
               variant="temporary"
               anchor="right"
               open={mobileOpen}
+              onClose={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}
               classes={{ paper: classes.drawerPaper }}
               ModalProps={{ keepMounted: true }}
             >
