@@ -13,7 +13,7 @@ const logo = {
 
 function SideBar({ setMobileOpen }) {
   const theme = useTheme();
-  const classes = useStyles;
+  const classes = useStyles();
 
   return (
     <Link to="/" className={classes.imageLink}>
