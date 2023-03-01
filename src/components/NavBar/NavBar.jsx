@@ -21,7 +21,7 @@ import { SideBar } from '..';
 import useStyles from './styles';
 
 function NavBar() {
-  const [mobileOpen, setMobileOpen] = useState('');
+  const [mobileOpen, setMobileOpen] = useState(false);
   const classes = useStyles();
   const isMobile = useMediaQuery('(max-width:600px)');
   const theme = useTheme();
