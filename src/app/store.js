@@ -1,14 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { setupListeners } from '@reduxjs/toolkit/query';
-import logger from 'redux-logger';
 
 import { tmdbApi } from '../services/TMDB';
 
-export const store = configureStore({
+export default configureStore({
   reducer: {
     [tmdbApi.reducerPath]: tmdbApi.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  middleware: (getDefaultMiddleware) =>
+    // eslint-disable-next-line implicit-arrow-linebreak
+    getDefaultMiddleware().concat(tmdbApi.middleware),
 });
-
-setupListeners(store.dispatch);
