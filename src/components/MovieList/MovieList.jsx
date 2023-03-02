@@ -1,6 +1,8 @@
 import { Grid } from '@mui/material';
 import React from 'react';
 
+import { Movie } from '..';
+
 import useStyles from './styles';
 
 function MovieList({ movies }) {
@@ -8,7 +10,9 @@ function MovieList({ movies }) {
 
   return (
     <Grid container className={classes.moviesContainer}>
-      MovieList
+      {movies.results.map((movie, i) => (
+        <Movie key={i} movie={movie} i={i} />
+      ))}
     </Grid>
   );
 }
