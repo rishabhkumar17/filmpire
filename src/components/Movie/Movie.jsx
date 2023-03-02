@@ -1,4 +1,4 @@
-import { Grid, Grow, Typography } from '@mui/material';
+import { Grid, Grow, Rating, Typography } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -23,6 +23,7 @@ function Movie({ movie, i }) {
           <Typography className={classes.title} variant="h5">
             {movie.title}
           </Typography>
+          <Rating readOnly value={movie.vote_average / 2} precision={0.1} />
         </Link>
       </Grow>
     </Grid>
