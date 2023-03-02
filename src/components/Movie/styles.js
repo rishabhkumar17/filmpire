@@ -4,6 +4,9 @@ export default makeStyles((theme) => ({
   movie: {
     padding: '10px',
   },
+  links: {
+    alignItems: 'center',
+  },
   title: {
     color: theme.palette.text.primary,
     textOverflow: 'ellipsis',
