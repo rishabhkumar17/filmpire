@@ -44,7 +44,9 @@ function SideBar({ setMobileOpen }) {
   const classes = useStyles();
   const { data, isFetching } = useGetGenresQuery();
   const dispatch = useDispatch();
-
+  const { genreOrCategoryName } = useSelector(
+    (state) => state.currentGenreOrCategory
+  );
   return (
     <>
       <Link to="/" className={classes.imageLink}>
