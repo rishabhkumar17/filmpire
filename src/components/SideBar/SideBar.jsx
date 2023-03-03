@@ -10,6 +10,8 @@ import { useTheme } from '@mui/styles';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { useGetGenresQuery } from '../../services/TMDB';
+
 import useStyles from './styles';
 
 const logo = {
@@ -35,7 +37,8 @@ const demoCategories = [
 function SideBar({ setMobileOpen }) {
   const theme = useTheme();
   const classes = useStyles();
-
+  const { data, isFetching } = useGetGenresQuery();
+  console.log(data);
   return (
     <>
       <Link to="/" className={classes.imageLink}>
