@@ -1,4 +1,6 @@
 import {
+  Box,
+  CircularProgress,
   Divider,
   List,
   ListItem,
@@ -27,18 +29,18 @@ const categories = [
   { label: 'Upcoming', value: 'upcoming' },
 ];
 
-const demoCategories = [
-  { label: 'Comedy', value: 'comedy' },
-  { label: 'Action', value: 'action' },
-  { label: 'Horror', value: 'horror' },
-  { label: 'Animation', value: 'animation' },
-];
+// const demoCategories = [
+//   { label: 'Comedy', value: 'comedy' },
+//   { label: 'Action', value: 'action' },
+//   { label: 'Horror', value: 'horror' },
+//   { label: 'Animation', value: 'animation' },
+// ];
 
 function SideBar({ setMobileOpen }) {
   const theme = useTheme();
   const classes = useStyles();
   const { data, isFetching } = useGetGenresQuery();
-  console.log(data);
+
   return (
     <>
       <Link to="/" className={classes.imageLink}>
@@ -69,20 +71,26 @@ function SideBar({ setMobileOpen }) {
       <Divider />
       <List>
         <ListSubheader>Genres</ListSubheader>
-        {demoCategories.map(({ label, value }) => (
-          <Link key={value} className={classes.links} to="/">
-            <ListItem onClick={() => {}} button>
-              {/* <ListItemIcon>
+        {isFetching ? (
+          <Box display="flex" justifyContent="center">
+            <CircularProgress size="4rem" />
+          </Box>
+        ) : (
+          data.genres.map(({ name, id }) => (
+            <Link key={name} className={classes.links} to="/">
+              <ListItem onClick={() => {}} button>
+                {/* <ListItemIcon>
                 <img
                   src={logo.redLogo}
                   className={classes.genreImages}
                   height={30}
                 />
               </ListItemIcon> */}
-              <ListItemText primary={label} />
-            </ListItem>
-          </Link>
-        ))}
+                <ListItemText primary={name} />
+              </ListItem>
+            </Link>
+          ))
+        )}
       </List>
     </>
   );
