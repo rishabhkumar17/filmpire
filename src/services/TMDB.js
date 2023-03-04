@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const tmdbApiKey = process.env.REACT_APP_TMDB_KEY;
@@ -14,7 +15,7 @@ export const tmdbApi = createApi({
     }),
     // GET MOVIES BY [TYPE]
     getMovies: builder.query({
-      query: (genreIdOrCategoryName, page) => {
+      query: ({ genreIdOrCategoryName, page }) => {
         // GET MOVIES BY CATEGORY
         if (
           genreIdOrCategoryName &&
