@@ -29,7 +29,7 @@ export const tmdbApi = createApi({
           genreIdOrCategoryName &&
           typeof genreIdOrCategoryName === 'number'
         ) {
-          return `discover/movie?with_genres=${genreIdOrCategoryName}?api_key=${tmdbApiKey}&page=${page}`;
+          return `discover/movie?with_genres=${genreIdOrCategoryName}&api_key=${tmdbApiKey}&page=${page}`;
         }
 
         // GET POPULAR MOVIES
