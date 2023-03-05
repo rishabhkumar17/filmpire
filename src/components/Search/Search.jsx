@@ -1,13 +1,22 @@
 import { InputAdornment, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { Search as SearchIcon } from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
+
+import { searchMovie } from '../../features/currentGenreOrCategory';
 import useStyles from './styles';
 
 function Search() {
   const classes = useStyles();
   const [query, setQuery] = useState('');
+  const dispatch = useDispatch();
 
-  const handleKeyPress = () => {};
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      dispatch(searchMovie(query));
+    }
+  };
+
   return (
     <div className={classes.searchContainer}>
       <TextField
