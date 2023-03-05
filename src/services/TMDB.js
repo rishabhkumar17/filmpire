@@ -2,7 +2,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const tmdbApiKey = process.env.REACT_APP_TMDB_KEY;
-const page = 1;
 // https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1
 
 export const tmdbApi = createApi({
@@ -15,7 +14,7 @@ export const tmdbApi = createApi({
     }),
     // GET MOVIES BY [TYPE]
     getMovies: builder.query({
-      query: ({ genreIdOrCategoryName, page }) => {
+      query: ({ genreIdOrCategoryName, page, searchQuery }) => {
         // GET MOVIES BY CATEGORY
         if (
           genreIdOrCategoryName &&
@@ -30,6 +29,11 @@ export const tmdbApi = createApi({
           typeof genreIdOrCategoryName === 'number'
         ) {
           return `discover/movie?with_genres=${genreIdOrCategoryName}&api_key=${tmdbApiKey}&page=${page}`;
+        }
+
+        // GET MOVIES BY SEARCH
+        if (searchQuery) {
+          return `/search/movie?query=${searchQuery}&page=${page}&api_key=${tmdbApiKey}`;
         }
 
         // GET POPULAR MOVIES
