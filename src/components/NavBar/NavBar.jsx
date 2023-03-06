@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   AppBar,
   Avatar,
@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 
 import { Search, SideBar } from '..';
-import { fetchToken } from '../../utils';
+import { fetchToken, createSessionId, moviesApi } from '../../utils';
 
 import useStyles from './styles';
 
@@ -28,6 +28,27 @@ function NavBar() {
   const isMobile = useMediaQuery('(max-width:600px)');
   const theme = useTheme();
   const isAuthenticated = false;
+
+  const token = localStorage.getItem('request_token');
+  const sessionIdFromLocalStorage = localStorage.getItem('session_id');
+
+  useEffect(() => {
+    const logInUser = async () => {
+      if (token) {
+        if (sessionIdFromLocalStorage) {
+          const { data: userData } = await moviesApi.get(
+            `/account?session_id=${sessionIdFromLocalStorage}`
+          );
+        } else {
+          const sessionId = await createSessionId();
+
+          const { data: userData } = await moviesApi.get(
+            `/account?session_id=${sessionId}`
+          );
+        }
+      }
+    };
+  }, [token]);
 
   return (
     <>
