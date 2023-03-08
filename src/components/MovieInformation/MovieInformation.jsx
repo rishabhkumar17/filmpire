@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 
 import useStyles from './styles';
 import { useGetMovieQuery } from '../../services/TMDB';
+import genreIcons from '../../assets/genres';
 
 function MovieInformation() {
   const classes = useStyles();
@@ -60,6 +61,25 @@ function MovieInformation() {
                 ? data?.spoken_languages[0].name
                 : ''}
             </Typography>
+          </Grid>
+          <Grid item className={classes.genresContainer}>
+            {data?.genres?.map((genre) => (
+              <Link
+                key={genre.name}
+                className={classes.links}
+                to="/"
+                onClick={() => {}}
+              >
+                <img
+                  src={genreIcons[genre.name.toLowerCase()]}
+                  className={classes.genreImage}
+                  height={30}
+                />
+                <Typography color="textPrimary" variant="subtitle1">
+                  {genre?.name}
+                </Typography>
+              </Link>
+            ))}
           </Grid>
         </Grid>
       </Grid>
