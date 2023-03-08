@@ -1,15 +1,18 @@
 import { Box, CircularProgress, Grid, Rating, Typography } from '@mui/material';
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import useStyles from './styles';
 import { useGetMovieQuery } from '../../services/TMDB';
 import genreIcons from '../../assets/genres';
+import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 
 function MovieInformation() {
   const classes = useStyles();
   const { id } = useParams();
   const { data, isFetching, error } = useGetMovieQuery(id);
+  const dispatch = useDispatch();
 
   if (isFetching) {
     return (
@@ -68,7 +71,7 @@ function MovieInformation() {
                 key={genre.name}
                 className={classes.links}
                 to="/"
-                onClick={() => {}}
+                onClick={() => dispatch(selectGenreOrCategory(genre.id))}
               >
                 <img
                   src={genreIcons[genre.name.toLowerCase()]}
