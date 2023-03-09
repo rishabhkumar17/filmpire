@@ -1,7 +1,17 @@
-import { Box, CircularProgress, Grid, Rating, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  CircularProgress,
+  Grid,
+  Rating,
+  Typography,
+} from '@mui/material';
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Language, Theaters } from '@mui/icons-material';
+import MovieIcon from '@mui/icons-material/Movie';
 
 import useStyles from './styles';
 import { useGetMovieQuery } from '../../services/TMDB';
@@ -123,6 +133,38 @@ function MovieInformation() {
                     )
                 )
                 .slice(0, 6)}
+          </Grid>
+          <Grid item container style={{ marginTop: '2rem' }}>
+            <div className={classes.buttonsContainer}>
+              <Grid item xs={12} sm={6} className={classes.buttonsContainer}>
+                <ButtonGroup size="small" variant="outlined">
+                  <Button
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={data?.homepage}
+                    endIcon={<Language />}
+                  >
+                    Website
+                  </Button>
+                  <Button
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={`https://www.imdb.com/title/${data?.imdb_id}`}
+                    endIcon={<MovieIcon />}
+                  >
+                    IMDB
+                  </Button>
+                  <Button onClick={() => {}} href="#" endIcon={<Theaters />}>
+                    Trailer
+                  </Button>
+                </ButtonGroup>
+              </Grid>
+              <Grid item xs={12} sm={6} className={classes.buttonsContainer}>
+                <ButtonGroup size="small" variant="outlined">
+                  <Button onClick={addToFavorites} />
+                </ButtonGroup>
+              </Grid>
+            </div>
           </Grid>
         </Grid>
       </Grid>
