@@ -40,10 +40,6 @@ function MovieInformation() {
     );
   }
 
-  const addToFavorites = () => {
-    console.log('Hey');
-  };
-
   return (
     <Grid container className={classes.containerSpaceAround}>
       <Grid item sx={12} lg={4}>
