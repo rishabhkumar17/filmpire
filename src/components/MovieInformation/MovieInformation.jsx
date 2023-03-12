@@ -150,7 +150,7 @@ function MovieInformation() {
           <Grid item container style={{ marginTop: '2rem' }}>
             <div className={classes.buttonsContainer}>
               <Grid item xs={12} sm={6} className={classes.buttonsContainer}>
-                <ButtonGroup size="small" variant="outlined">
+                <ButtonGroup size="medium" variant="outlined">
                   <Button
                     target="_blank"
                     rel="noopener noreferrer"
@@ -173,7 +173,7 @@ function MovieInformation() {
                 </ButtonGroup>
               </Grid>
               <Grid item xs={12} sm={6} className={classes.buttonsContainer}>
-                <ButtonGroup size="small" variant="outlined">
+                <ButtonGroup size="medium" variant="outlined">
                   <Button
                     onClick={addToFavorites}
                     endIcon={
@@ -201,6 +201,7 @@ function MovieInformation() {
                       to="/"
                       color="inherit"
                       variant="subtitle2"
+                      style={{ textDecoration: 'none' }}
                     >
                       Back
                     </Typography>
