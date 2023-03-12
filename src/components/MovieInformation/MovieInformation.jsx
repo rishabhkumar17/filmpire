@@ -10,7 +10,12 @@ import {
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Language, Theaters } from '@mui/icons-material';
+import {
+  Favorite,
+  FavoriteBorderOutlined,
+  Language,
+  Theaters,
+} from '@mui/icons-material';
 import MovieIcon from '@mui/icons-material/Movie';
 
 import useStyles from './styles';
@@ -23,6 +28,9 @@ function MovieInformation() {
   const { id } = useParams();
   const { data, isFetching, error } = useGetMovieQuery(id);
   const dispatch = useDispatch();
+  const isMovieFavorited = true;
+
+  const addToFavorites = () => {};
 
   if (isFetching) {
     return (
@@ -161,7 +169,18 @@ function MovieInformation() {
               </Grid>
               <Grid item xs={12} sm={6} className={classes.buttonsContainer}>
                 <ButtonGroup size="small" variant="outlined">
-                  <Button onClick={addToFavorites} />
+                  <Button
+                    onClick={addToFavorites}
+                    endIcon={
+                      isMovieFavorited ? (
+                        <FavoriteBorderOutlined />
+                      ) : (
+                        <Favorite />
+                      )
+                    }
+                  >
+                    {isMovieFavorited ? 'Unfavorite' : 'Favorite'}
+                  </Button>
                 </ButtonGroup>
               </Grid>
             </div>
