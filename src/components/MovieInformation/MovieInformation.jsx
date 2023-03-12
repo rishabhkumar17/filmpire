@@ -14,6 +14,8 @@ import {
   Favorite,
   FavoriteBorderOutlined,
   Language,
+  PlusOne,
+  Remove,
   Theaters,
 } from '@mui/icons-material';
 import MovieIcon from '@mui/icons-material/Movie';
@@ -29,8 +31,10 @@ function MovieInformation() {
   const { data, isFetching, error } = useGetMovieQuery(id);
   const dispatch = useDispatch();
   const isMovieFavorited = true;
+  const isMovieWatchlisted = false;
 
   const addToFavorites = () => {};
+  const addToWatchlist = () => {};
 
   if (isFetching) {
     return (
@@ -180,6 +184,12 @@ function MovieInformation() {
                     }
                   >
                     {isMovieFavorited ? 'Unfavorite' : 'Favorite'}
+                  </Button>
+                  <Button
+                    onClick={addToWatchlist}
+                    endIcon={isMovieWatchlisted ? <Remove /> : <PlusOne />}
+                  >
+                    Watchlist
                   </Button>
                 </ButtonGroup>
               </Grid>
