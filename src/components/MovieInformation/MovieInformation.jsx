@@ -11,6 +11,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  ArrowBack,
   Favorite,
   FavoriteBorderOutlined,
   Language,
@@ -190,6 +191,19 @@ function MovieInformation() {
                     endIcon={isMovieWatchlisted ? <Remove /> : <PlusOne />}
                   >
                     Watchlist
+                  </Button>
+                  <Button
+                    endIcon={<ArrowBack />}
+                    sx={{ borderColor: 'primary.main' }}
+                  >
+                    <Typography
+                      component={Link}
+                      to="/"
+                      color="inherit"
+                      variant="subtitle2"
+                    >
+                      Back
+                    </Typography>
                   </Button>
                 </ButtonGroup>
               </Grid>
