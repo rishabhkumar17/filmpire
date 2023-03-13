@@ -23,6 +23,7 @@ import MovieIcon from '@mui/icons-material/Movie';
 
 import useStyles from './styles';
 import { useGetMovieQuery } from '../../services/TMDB';
+
 import genreIcons from '../../assets/genres';
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 
