@@ -11,6 +11,5 @@ export default configureStore({
     user: userReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    // eslint-disable-next-line implicit-arrow-linebreak
     getDefaultMiddleware().concat(tmdbApi.middleware),
 });
